@@ -94,7 +94,7 @@
   // Safari 3.0+ "[object HTMLElementConstructor]"
   var isSafari = function() {
     return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 ||
-    (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);  // eslint-disable-line
+    (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window.safari || window.safari.pushNotification);
   };
 
   //This clunky regex is taken directly from http://detectmobilebrowsers.com/
