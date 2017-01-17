@@ -17,7 +17,7 @@
   };
 
   var isAndroid = function() {
-    this.android = isUA("android") && !isLegacyAndroid();
+    return isUA("android") && !isLegacyAndroid();
   };
 
   var isLegacyIOS = function() {
