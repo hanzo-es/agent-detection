@@ -1,7 +1,9 @@
 (function(){
 
+  var ua = navigator.userAgent.toLowerCase();
+
   var isUA = function(text){
-    return navigator.userAgent.toLowerCase().indexOf(text) > -1;
+    return ua.indexOf(text) > -1;
   };
 
   var isTouch = function() {
