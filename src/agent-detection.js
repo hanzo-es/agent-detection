@@ -80,7 +80,7 @@
 
   //Opera 8.0+
   var isOpera = function() {
-    return (!!window.opr && !!opr.addons) || !!window.opera || isUA(' OPR/'); // eslint-disable-line
+    return (!!window.opr && !!window.opr.addons) || !!window.opera || isUA(' OPR/');
   };
 
   var isIOSChrome = function() {
