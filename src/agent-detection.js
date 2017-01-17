@@ -105,6 +105,7 @@
   };
 
   var addClasses = function() {
+    var buffer = '';
 
     UA = {
       "ua-touch"          : isTouch(),
@@ -132,10 +133,11 @@
 
     for (var ua in UA) {
       if (UA.hasOwnProperty(ua) && UA[ua]) {
-        $html.addClass(ua);
+        buffer += ' '+ua+' ';
       }
     }
 
+    document.documentElement.className += buffer;
   };
 
   // init
