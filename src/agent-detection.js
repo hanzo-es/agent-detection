@@ -143,17 +143,7 @@ class AgentDetection {
         $html.addClass(ua);
       }
     }
-  }
 
-  removeClasses() {
-    let $html = $('html');
-    let classes = $html.attr('class').split(" ");
-
-    classes.map((element) => {
-      if (element.indexOf('ua-') > -1){
-        $html.removeClass(element);
-      }
-    });
   }
 }
 
