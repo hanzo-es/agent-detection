@@ -17,7 +17,7 @@ class AgentDetection {
   }
 
   isAndroid() {
-    this.android = this.isUA("android") && !this.isLegacyAndroid();
+    return this.isUA("android") && !this.isLegacyAndroid();
   }
 
   isLegacyIOS() {
@@ -154,6 +154,10 @@ class AgentDetection {
         $html.removeClass(element);
       }
     });
+  }
+
+  constructor () {
+    this.addClasses();
   }
 }
 
