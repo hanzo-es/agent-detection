@@ -14,21 +14,23 @@
 
   var AgentDetection = function (uaContent) {
 
-    // Singleton instanciation
+    var ua = uaContent || ((window && window.navigator && window.navigator.userAgent) ? window.navigator.userAgent : '');
+
     if (!(this instanceof AgentDetection)) {
       return new AgentDetection(uaContent);
     }
 
-    var ua = uaContent || ((window && window.navigator && window.navigator.userAgent) ? window.navigator.userAgent : EMPTY);
 
     //////////////////
-    // PRIVATE METHODS
+    // PRIVATE METHODS& PROPS
     //////////////////
 
     //returns ua filtered
     var isUA = function(text) {
-      return ua.indexOf(text) > -1;
+
+      return ua.toLowerCase().indexOf(text) > -1;
     };
+
 
     //////////////////
     // PUBLIC METHODS
@@ -45,6 +47,7 @@
       return this;
     };
 
+
     //////////////////
     // DETECTORS
     //////////////////
@@ -56,27 +59,28 @@
 
     // Old Android
     this.isLegacyAndroid = function() {
-      return isUA("android 2") ||
-             isUA("android 3") ||
-             isUA("android 4");
+      return isUA('android 1') ||
+             isUA('android 2') ||
+             isUA('android 3') ||
+             isUA('android 4');
     },
 
     // Android
     this.isAndroid = function() {
-      return isUA("android") && !isLegacyAndroid();
+      return isUA('android') && !this.isLegacyAndroid();
     },
 
     // Old IOS
     this.isLegacyIOS = function() {
-      return isUA("iphone os 4") || isUA("cpu os 4") ||
-             isUA("iphone os 5") || isUA("cpu os 5") ||
-             isUA("iphone os 6") || isUA("cpu os 6") ||
-             isUA("iphone os 7") || isUA("cpu os 7");
+      return isUA('iphone os 4') || isUA('cpu os 4') ||
+             isUA('iphone os 5') || isUA('cpu os 5') ||
+             isUA('iphone os 6') || isUA('cpu os 6') ||
+             isUA('iphone os 7') || isUA('cpu os 7');
     },
 
     // IOS
     this.isIOS = function() {
-      return (isUA("iphone os") || isUA("cpu os")) && !isLegacyIOS();
+      return (isUA('iphone os') || isUA('cpu os')) && !thisisLegacyIOS();
     },
 
     // Old touch
@@ -86,32 +90,32 @@
 
     // Internet Explorer Mobile
     this.isMobileIE = function() {
-      return isUA("iemobile");
+      return isUA('iemobile');
     },
 
     // Internet Explorer 8
     this.isIE8 = function() {
-      return isUA("trident/4") && !this.isMobileIE();
+      return isUA('trident/4') && !this.isMobileIE();
     },
 
     // Internet Explorer 9
     this.isIE9 = function() {
-      return isUA("trident/5") && !this.isMSIE10() && !this.isMobileIE();
+      return isUA('trident/5') && !this.isMSIE10() && !this.isMobileIE();
     },
 
     // Internet Explorer 10 mobile
     this.isMSIE10 = function() {
-      return isUA("msie 10");
+      return isUA('msie 10');
     },
 
     // Internet Explorer 10 Desktop
     this.isIE10 = function() {
-      return isUA("trident/6") || this.isMSIE10() && !this.isMobileIE();
+      return isUA('trident/6') || this.isMSIE10() && !this.isMobileIE();
     },
 
     // Internet Explorer 11
     this.isIE11 = function() {
-      return isUA("trident/7") && !this.isMobileIE();
+      return isUA('trident/7') && !this.isMobileIE();
     },
 
     // Internet Explorer 6-11
@@ -126,7 +130,7 @@
 
     // Windows environement
     this.isWindows = function() {
-      return isUA("windows");
+      return isUA('windows');
     },
 
     // Firefox 1.0+
@@ -141,17 +145,17 @@
 
     // Chrome on IOS
     this.isIOSChrome = function() {
-      return isUA("CriOS");
+      return isUA('CriOS');
     },
 
     this.isChrome = function() {
       return !!window.chrome && !!window.chrome.webstore;
     },
 
-    // Safari 3.0+ "[object HTMLElementConstructor]"
+    // Safari 3.0+ '[object HTMLElementConstructor]'
     this.isSafari = function() {
       return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 ||
-      (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window.safari || window.safari.pushNotification);
+      (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window.safari || window.safari.pushNotification);
     },
 
     // This clunky regex is taken directly from http://detectmobilebrowsers.com/
@@ -162,42 +166,45 @@
     },
 
     // Check for current user agent and adds the css class to HTML DOM tag
-    this.addClasses = function() {
+    this.getClasses = function() {
       var buffer = '';
-
       var UA = {
-        "ua-touch"          : this.isTouch(),
-        "ua-no-touch"       : !this.isTouch(),
-        "ua-legacy-android" : this.isLegacyAndroid(),
-        "ua-android"        : this.isAndroid(),
-        "ua-legacy-ios"     : this.isLegacyIOS(),
-        "ua-ios"            : this.isIOS(),
-        "ua-legacy-touch"   : this.isLegacyTouch(),
-        "ua-mobile-ie"      : this.isMobileIE(),
-        "ua-ie8"            : this.isIE8(),
-        "ua-ie9"            : this.isIE9(),
-        "ua-ie10"           : this.isIE10(),
-        "ua-ie11"           : this.isIE11(),
-        "ua-ie"             : this.isIE(),
-        "ua-windows"        : this.isWindows(),
-        "ua-firefox"        : this.isFirefox(),
-        "ua-opera"          : this.isOpera(),
-        "ua-ie-edge"        : this.isIEEdge(),
-        "ua-ios-chrome"     : this.isIOSChrome(),
-        "ua-chrome"         : this.isChrome(),
-        "ua-safari"         : this.isSafari(),
-        "ua-mobile"         : this.isMobile()
+        'ua-touch'          : this.isTouch(),
+        'ua-no-touch'       : !this.isTouch(),
+        'ua-legacy-android' : this.isLegacyAndroid(),
+        'ua-android'        : this.isAndroid(),
+        'ua-legacy-ios'     : this.isLegacyIOS(),
+        'ua-ios'            : this.isIOS(),
+        'ua-legacy-touch'   : this.isLegacyTouch(),
+        'ua-mobile-ie'      : this.isMobileIE(),
+        'ua-ie8'            : this.isIE8(),
+        'ua-ie9'            : this.isIE9(),
+        'ua-ie10'           : this.isIE10(),
+        'ua-ie11'           : this.isIE11(),
+        'ua-ie'             : this.isIE(),
+        'ua-windows'        : this.isWindows(),
+        'ua-firefox'        : this.isFirefox(),
+        'ua-opera'          : this.isOpera(),
+        'ua-ie-edge'        : this.isIEEdge(),
+        'ua-ios-chrome'     : this.isIOSChrome(),
+        'ua-chrome'         : this.isChrome(),
+        'ua-safari'         : this.isSafari(),
+        'ua-mobile'         : this.isMobile()
       };
-
       for (var ua in UA) {
         if (UA.hasOwnProperty(ua) && UA[ua]) {
           buffer += ' '+ua+' ';
         }
       }
-      document.documentElement.className += buffer;
+      return buffer;
+    }
+
+    this.addClasses = function () {
+      document.documentElement.className += this.getClasses();
     }
 
     return this;
+
   };
 
 
