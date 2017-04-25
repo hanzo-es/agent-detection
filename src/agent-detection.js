@@ -80,7 +80,7 @@
 
     // IOS
     this.isIOS = function() {
-      return (isUA('iphone os') || isUA('cpu os')) && !thisisLegacyIOS();
+      return (isUA('iphone os') || isUA('cpu os')) && !this.isLegacyIOS();
     },
 
     // Old touch
