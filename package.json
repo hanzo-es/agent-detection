@@ -1,0 +1,20 @@
+{
+  "name": "agent-detection",
+  "version": "1.0.0",
+  "description": "Detects user agent and adds the classname to the html DOM tag",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@repos.codehanzo.com:hanzo/agent-detection.git"
+  },
+  "keywords": [
+    "user",
+    "agent",
+    "detection"
+  ],
+  "author": "Hanzo",
+  "license": "ISC"
+}
