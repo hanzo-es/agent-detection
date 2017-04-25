@@ -1,13 +1,3 @@
-
-/**
- * AgentDetection.js v0.7.12
- * Lightweight JavaScript-based User-Agent string parser
- * https://github.com/faisalman/ua-parser-js
- *
- * Copyright © 2012-2016 Faisal Salman <fyzlman@gmail.com>
- * Dual licensed under GPLv2 & MIT
- */
-
 (function (window, undefined) {
 
   'use strict';
