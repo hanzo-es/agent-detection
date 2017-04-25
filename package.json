@@ -4,7 +4,7 @@
   "description": "Detects user agent and adds the classname to the html DOM tag",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
