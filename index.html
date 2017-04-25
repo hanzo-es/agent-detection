@@ -1,4 +1,4 @@
-<html class='dummy'>
+<html class=''>
 
 <head>
   <script src="src/agent-detection.js"></script>
@@ -6,6 +6,11 @@
 
 
 <body>
-  Hello world!
+  <script>
+    var ua = agentDetection.getInstance();
+    ua.addClasses();
+    
+    document.write (document.documentElement.className);
+  </script>
 </body>
 </html>
