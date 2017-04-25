@@ -1,15 +1,16 @@
 <html class=''>
 
 <head>
-  <script src="src/agent-detection.js"></script>
+  <script type="text/javascript" src="src/agent-detection.js"></script>
 </head>
 
 
 <body>
-  <script>
-    var ua = agentDetection.getInstance();
+  <script type="text/javascript">
+
+  	var ua = new AgentDetection();
     ua.addClasses();
-    
+
     document.write (document.documentElement.className);
   </script>
 </body>
