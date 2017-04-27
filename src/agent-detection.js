@@ -17,7 +17,6 @@
 
     //returns ua filtered
     var isUA = function(text) {
-
       return ua.toLowerCase().indexOf(text) > -1;
     };
 
