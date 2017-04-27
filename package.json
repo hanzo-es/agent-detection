@@ -4,7 +4,8 @@
   "description": "Detects user agent and adds the classname to the html DOM tag",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "uglify": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/app.js && uglifyjs src/*.js -m -c -o dist/js/app.min.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
     "detection"
   ],
   "author": "Hanzo",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "uglify-js": "^2.8.22"
+  }
 }
