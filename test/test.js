@@ -1,6 +1,13 @@
 var assert = require('assert');
 var AgentDetection  = require('./../src/agent-detection');
 var agentDetection = new AgentDetection();
+var jsdom = require('jsdom-global')();
+var w = window;
+//SIMULATE PROPS
+
+// {
+//   userAgent : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+// };
 
 //REAL USERAGENTLIST FROM https://www.whatismybrowser.com/developers/tools/user-agent-parser/browse
 var userAgentList = [
@@ -18,6 +25,7 @@ var userAgentList = [
     testingFunction : 'isAndroid',
     testingClass: 'ua-android'
   },
+  /*
   {
     uaList : [
       'Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; ja-jp) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5',
@@ -81,27 +89,110 @@ var userAgentList = [
     ],
     testingFunction : 'isWindows',
     testingClass: 'ua-windows'
+  },*/
+];
+
+nonUserAgentList = [
+  {
+    testingFunction : 'isIE',
+    testingClass: 'ua-ie'
+
+  },
+  {
+    testingFunction : 'isIEEdge',
+    testingClass: 'ua-ie-edge'
+  },
+  {
+    testingFunction : 'isFirefox',
+    testingClass: 'ua-firefox'
   },
 ];
 
+beforeEach(function () {
+  this.jsdom = require('jsdom-global')();
+})
 
+
+afterEach(function () {
+  this.jsdom();
+  window = null;
+});
+
+describe('Test the isTouch()', function () {
+
+  it ('should return true for isTouch() when has touchstart', function () {
+    window.ontouchstart = true;// function(){/* no opp*/};
+    console.log(window.ontouchstart);
+    assert.equal(true, agentDetection.isTouch());
+  });
+
+  it ('should have the class ua-touch for isTouch()', function () {
+    assert.notEqual(-1, agentDetection.getClasses().indexOf('ua-touch'));
+  });
+
+});
+
+describe('Test the !isTouch()', function () {
+  // before (function () {
+  //   console.log("!!!",window.ontouchstart);
+  //   //window = {};
+  //   console.log("!!!",window.ontouchstart);
+  // });
+  // before (function () {
+  //   console.log("!!!",window.ontouchstart);
+  //   delete window.ontouchstart;
+  //   window = {};
+  //   console.log("!!!",window.ontouchstart);
+  // });
+
+  it ('should return false for isTouch() when no touchstart', function () {
+    console.log('ontouchstart' in window, agentDetection.isTouch());
+    assert.equal(false, agentDetection.isTouch());
+  });
+
+  it ('should have the class ua-no-touch for isTouch()', function () {
+    console.log(agentDetection.getClasses());
+    assert.notEqual(-1, agentDetection.getClasses().indexOf('ua-no-touch'));
+  });
+});
+
+
+/*
 describe('Test the isUA (userAgent based) functions', function () {
 
   for (var i=0; i<userAgentList.length;i++) {
     var uaTest = userAgentList[i];
     var uaList = uaTest.uaList;
 
-    for (var j=0;j<uaList.length;j++) {
-      var currentUA = uaList[j];
-      agentDetection.setUA(currentUA);
+    if (uaList.length>0){
+      for (var j=0;j<uaList.length;j++) {
+        var currentUA = uaList[j];
+        agentDetection.setUA(currentUA);
 
-      it('should return true for ' + uaTest.testingFunction + '  on: ' + currentUA, function() {
-        assert.equal(true ,agentDetection[uaTest.testingFunction]() );
-      });
+        it('should return true for ' + uaTest.testingFunction + '  on: ' + agentDetection.getUA() , function() {
+          assert.equal(true , agentDetection[uaTest.testingFunction]() );
+        });
 
-      // it('should add the class \"' + uaTest.testingClass + '\"', function() {
-      //   assert.notEqual(-1, agentDetection.getClasses().indexOf(uaTest.testingClass) );
-      // });
+        it('should add the class \"' + uaTest.testingClass + '\"', function() {
+          assert.notEqual(-1, agentDetection.getClasses().indexOf(uaTest.testingClass) );
+        });
+      }
     }
   }
 });
+
+
+describe('Test the isUA (nonUserAgent based) functions', function () {
+  for (var i=0; i<nonUserAgentList.length;i++) {
+    var uaTest = nonUserAgentList[i];
+    //agentDetection.setUA("!");
+    it('should return true for ' + uaTest.testingFunction, function () {
+      assert.equal(true, agentDetection[uaTest.testingFunction]());
+    });
+
+    it('should add the class \"' + uaTest.testingClass + '\"', function() {
+      assert.notEqual(-1, agentDetection.getClasses().indexOf(uaTest.testingClass) );
+   });
+  }
+});
+*/
