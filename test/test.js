@@ -1,8 +1,11 @@
 var assert = require('assert');
-var AgentDetection  = require('./../src/agent-detection');
-var agentDetection = new AgentDetection();
 var jsdom = require('jsdom-global')();
-var w = window;
+var path = require('path');
+var AgentDetection, agentDetection, w;
+
+var AGENT_DETECTION_REL_PATH = './../src/agent-detection';
+
+
 //SIMULATE PROPS
 
 // {
@@ -108,21 +111,34 @@ nonUserAgentList = [
   },
 ];
 
-beforeEach(function () {
+var setup = function() {
   this.jsdom = require('jsdom-global')();
-})
+  AgentDetection  = require(AGENT_DETECTION_REL_PATH);
+  agentDetection = new AgentDetection();
+};
 
-
-afterEach(function () {
+var teardown = function() {
   this.jsdom();
-  window = null;
-});
+  var modulePath = path.resolve(__dirname, AGENT_DETECTION_REL_PATH);
+  agentDetection = null;
+  AgentDetection = null;
+  delete require.cache[modulePath + '.js'];
+};
 
 describe('Test the isTouch()', function () {
 
+  beforeEach(function () {
+    setup.call(this);
+    window.ontouchstart = true;
+  });
+
+
+  afterEach(function () {
+    teardown.call(this);
+  });
+
   it ('should return true for isTouch() when has touchstart', function () {
-    window.ontouchstart = true;// function(){/* no opp*/};
-    console.log(window.ontouchstart);
+    // function(){/* no opp*/};
     assert.equal(true, agentDetection.isTouch());
   });
 
@@ -144,6 +160,15 @@ describe('Test the !isTouch()', function () {
   //   window = {};
   //   console.log("!!!",window.ontouchstart);
   // });
+
+  beforeEach(function () {
+    setup.call(this);
+  });
+
+
+  afterEach(function () {
+    teardown.call(this);
+  });
 
   it ('should return false for isTouch() when no touchstart', function () {
     console.log('ontouchstart' in window, agentDetection.isTouch());
