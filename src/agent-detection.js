@@ -43,6 +43,7 @@
 
     // is touch device (has touch functionalities)
     this.isTouch = function() {
+      //console.log(window);
       return ('ontouchstart' in window);
     },
 
@@ -134,7 +135,7 @@
 
     // Chrome on IOS
     this.isIOSChrome = function() {
-      return isUA('CriOS');
+      return isUA('crios');
     },
 
     this.isChrome = function() {
@@ -169,6 +170,7 @@
         'ua-ie8'            : this.isIE8(),
         'ua-ie9'            : this.isIE9(),
         'ua-ie10'           : this.isIE10(),
+        'ua-msie10'         : this.isMSIE10(),
         'ua-ie11'           : this.isIE11(),
         'ua-ie'             : this.isIE(),
         'ua-windows'        : this.isWindows(),

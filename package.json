@@ -19,6 +19,8 @@
   "author": "Hanzo",
   "license": "ISC",
   "devDependencies": {
+    "jsdom": "9.12.0",
+    "jsdom-global": "2.1.1",
     "mocha": "^3.3.0",
     "uglify-js": "^2.8.22"
   }
