@@ -110,7 +110,7 @@
 
     // Internet Explorer 6-11
     this.isIE = function() {
-      return false || !!document.documentMode;
+      return !!document.documentMode || false;
     },
 
     // Edge 20+

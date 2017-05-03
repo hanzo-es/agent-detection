@@ -1,11 +1,11 @@
 {
   "name": "agent-detection",
   "version": "1.0.0",
-  "description": "Detects current user agent and adds the classname to the html DOM tag",
+  "description": "Detects current user agent and adds in case a classname to the html DOM tag",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "uglify": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/app.js && uglifyjs src/*.js -m -c -o dist/js/app.min.js"
+    "build": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/app.js && uglifyjs src/*.js -m -c -o dist/js/app.min.js"
   },
   "repository": {
     "type": "git",
