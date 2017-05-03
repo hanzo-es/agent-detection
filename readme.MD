@@ -17,15 +17,15 @@ for example: ```.ua-ie .mycomponent { css only for ua-ie} ```
 Require the utility and use the public method to add the classes to <html> tag
 
 ```
-  AgentDetection  = require('agent-detection');
-  agentDetection = new AgentDetection();
+  var AgentDetection  = require('agent-detection');
+  var agentDetection = new AgentDetection();
   agentDetection.addClasses();
 ```
 
 Also you can ask in your javascript code for an specific userAgent.
 ```
-  AgentDetection  = require('agent-detection');
-  agentDetection = new AgentDetection();
+  var AgentDetection  = require('agent-detection');
+  var agentDetection = new AgentDetection();
 
   agentDetection.isTouch();
 ```
@@ -38,10 +38,10 @@ To make it available in your projects just install the package
 `npm -i --save agent-detection`
 
 And make it available with require
-`AgentDetection  = require('agent-detection');`
+`var AgentDetection  = require('agent-detection');`
 
 Or load it as a script.
-`<script type="text/javascript" src="src/agent-detection.js"></script>`
+`<script type="text/javascript" src="PATH-TO-SCRIPT/agent-detection.js"></script>`
 
 
 ## Tests
