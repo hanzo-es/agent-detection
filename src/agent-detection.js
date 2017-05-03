@@ -73,7 +73,7 @@
     * Detects is touch device (has touch functionalities)
     * @returns {Boolean} true if condition meet:
     * (window elements has touch functionalities)
-    **/
+    */
     this.isTouch = function() {
       return ('ontouchstart' in window);
     },
@@ -82,7 +82,7 @@
     * Detects Old Android
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isLegacyAndroid = function() {
       return isUA('android 1') ||
              isUA('android 2') ||
@@ -94,7 +94,7 @@
     * Detects Android
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isAndroid = function() {
       return isUA('android') && !this.isLegacyAndroid();
     },
@@ -103,7 +103,7 @@
     * Detects Old IOS
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isLegacyIOS = function() {
       return isUA('iphone os 4') || isUA('cpu os 4') ||
              isUA('iphone os 5') || isUA('cpu os 5') ||
@@ -115,7 +115,7 @@
     * Detects IOS
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isIOS = function() {
       return (isUA('iphone os') || isUA('cpu os')) && !this.isLegacyIOS();
     },
@@ -124,7 +124,7 @@
     * Detects Old touch
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isLegacyTouch = function() {
       return  this.isLegacyAndroid() || this.isLegacyIOS();
     },
@@ -133,7 +133,7 @@
     * Detects Internet Explorer Mobile
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isMobileIE = function() {
       return isUA('iemobile');
     },
@@ -142,7 +142,7 @@
     * Detects Internet Explorer 8
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isIE8 = function() {
       return isUA('trident/4') && !this.isMobileIE();
     },
@@ -151,7 +151,7 @@
     * Detects Internet Explorer 9
     * @returns {Boolean} true if condition meet:
     * (custom string in current ua)
-    **/
+    */
     this.isIE9 = function() {
       return isUA('trident/5') && !this.isMSIE10() && !this.isMobileIE();
     },
@@ -160,7 +160,7 @@
     * Detects Internet Explorer 10 mobile (custom string in current ua)
     * @returns {Boolean} true if condition meet
     * (custom string in current ua)
-    **/
+    */
     this.isMSIE10 = function() {
       return isUA('msie 10');
     },
@@ -169,7 +169,7 @@
     * Detects Internet Explorer 10 Desktop (custom string in current ua)
     * @returns {Boolean} true if condition meet
     * (custom string in current ua)
-    **/
+    */
     this.isIE10 = function() {
       return isUA('trident/6') || this.isMSIE10() && !this.isMobileIE();
     },
@@ -178,7 +178,7 @@
     * Detects Internet Explorer 11 (custom string in current ua)
     * @returns {Boolean} true if condition meet
     * (custom string in current ua)
-    **/
+    */
     this.isIE11 = function() {
       return isUA('trident/7') && !this.isMobileIE();
     },
@@ -187,7 +187,7 @@
     * Detects Internet Explorer 6-11
     * @returns {Boolean} true if condition meet
     * (existence of document.documentMode property)
-    **/
+    */
     this.isIE = function() {
       return !!document.documentMode || false;
     },
@@ -196,7 +196,7 @@
     * Detects Edge 20+
     * @returns {Boolean} true if condition meet
     * (existence of windowStyleMedia property)
-    **/
+    */
     this.isIEEdge = function() {
       return !this.isIE() && !!window.StyleMedia;
     },
@@ -205,7 +205,7 @@
     * Detects Windows environement
     * @returns {Boolean} true if condition meet
     * (custom string in current ua)
-    **/
+    */
     this.isWindows = function() {
       return isUA('windows');
     },
@@ -214,7 +214,7 @@
     * Detects Firefox 1.0+
     * @returns {Boolean} true if condition meet
     * (window.InstallTrigger property in window object)
-    **/
+    */
     this.isFirefox = function() {
       return typeof window.InstallTrigger !== 'undefined';
     },
@@ -224,7 +224,7 @@
     * @returns {Boolean} true if condition meet
     * (one of the following properties exist: window.opr, window.opr.addons,
     * window.opera or OPR/string in user agent string )
-    **/
+    */
     this.isOpera = function() {
       return (!!window.opr && !!window.opr.addons) || !!window.opera || isUA(' OPR/');
     },
@@ -233,7 +233,7 @@
     * Detects Chrome on IOS
     * @returns {Boolean} true if condition meet
     * (custom string in current ua)
-    **/
+    */
     this.isIOSChrome = function() {
       return isUA('crios');
     },
@@ -243,7 +243,7 @@
     * @returns {Boolean} true if condition meet
     * (existence of one of the following properties: window.chrome,
     * window.chrome.webstore)
-    **/
+    */
     this.isChrome = function() {
       return !!window.chrome && !!window.chrome.webstore;
     },
@@ -254,7 +254,7 @@
     * (existence of the property: window.HTMLElement) or one of the following
     * objects window.safari || window.safari.pushNotification is typeof
     * [object SafariRemoteNotification]
-    **/
+    */
     this.isSafari = function() {
       return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 ||
       (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window.safari || window.safari.pushNotification);
@@ -266,7 +266,7 @@
     * @returns {Boolean} true if condition meet
     * (one of the following strings: navigator.userAgent , navigator.vendor,
     * window.opera meets the condition for the regex)
-    **/
+    */
     this.isMobile = function() {
       var stringCheck = (navigator.userAgent||navigator.vendor||window.opera);
       return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(stringCheck) ||
@@ -277,7 +277,7 @@
     * Check for current user agent and returns a string with the css classes
     * that meet the contidions
     * @returns {String} the ua css classes list as a string separated by spaces
-    **/
+    */
     this.getClasses = function() {
       var buffer = '';
       var UA = {
