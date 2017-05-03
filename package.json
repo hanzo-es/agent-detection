@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "build": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/app.js && uglifyjs src/*.js -m -c -o dist/js/app.min.js"
+    "build": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/agent-detection.js && uglifyjs src/*.js -m -c -o dist/js/agentDetection.min.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "detection"
   ],
   "author": "Hanzo",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jsdom": "9.12.0",
     "jsdom-global": "2.1.1",
