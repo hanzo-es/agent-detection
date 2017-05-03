@@ -220,25 +220,25 @@ describe('Test the isIE9()',function() {
 });
 
 
-// // Internet Explorer 10 mobile
-// describe('Test the isMSIE10()',function() {
-//   beforeEach(function () {
-//    var ua = ;
-//     setup.call(this, ua);
-//   });
-//
-//   afterEach(function () {
-//     teardown.call(this);
-//   });
-//
-//   it ('should return true for ()', function () {
-//     assert.equal(true, agentDetection.isTouch());
-//   });
-//
-//   it ('should have the class ua-msie10 for is()', function () {
-//     assert.notEqual(-1, agentDetection.getClasses().indexOf('ua-msie10'));
-//   });
-// });
+// Internet Explorer 10 mobile
+describe('Test the isMSIE10()',function() {
+  beforeEach(function () {
+   var ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)';
+    setup.call(this, ua);
+  });
+
+  afterEach(function () {
+    teardown.call(this);
+  });
+
+  it ('should return true for ()', function () {
+    assert.equal(true, agentDetection.isTouch());
+  });
+
+  it ('should have the class ua-msie10 for is()', function () {
+    assert.notEqual(-1, agentDetection.getClasses().indexOf('ua-msie10'));
+  });
+});
 
 // Internet Explorer 10 Desktop
 describe('Test the isIE10()',function() {
