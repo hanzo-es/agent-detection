@@ -232,7 +232,7 @@ describe('Test the isMSIE10()',function() {
   });
 
   it ('should return true for ()', function () {
-    assert.equal(true, agentDetection.isTouch());
+    assert.equal(true, agentDetection.isMSIE10());
   });
 
   it ('should have the class ua-msie10 for is()', function () {
