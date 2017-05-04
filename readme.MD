@@ -40,9 +40,6 @@ To make it available in your projects just install the package
 And make it available with require
 `var AgentDetection  = require('agent-detection');`
 
-Or load it as a script.
-`<script type="text/javascript" src="agent-detection.js"></script>`
-
 
 ## Tests
 
