@@ -1,56 +1,55 @@
 ## INFO ##
 
 Agent detection is an small utility to detect commonly used user agents.
-it uses several test approaches to detect user agents, most common userAgent
-chunk strings on the current setted userAgent String.
+It uses several approaches to detect user agents, most common userAgent
+chunk strings from the current userAgent String.
 
-Also for several detections it uses custom checks by functionality like for example
+It also uses custom checks by feature in some situations, like
 the existence of `documentMode` property on internetExplorer 6-11 user agents.
 
-This utility is intented to be used for add custom cssclasses to the HTML DOM tag <html>
-to set custom css properties for different user agents by doing
-for example:
+This utility is intented to be used to add custom CSS classes to the HTML DOM element <html> in order 
+to style elements in different user agents, by doing for example:
 
 ```.ua-ie .mycomponent { css only for ua-ie} ```
 
 
 ## Code Example
 
-Require the utility and use the public method to add the classes to <html> tag
+Require the utility and use the public method to add the classes to <html> element
 
 ```
   var AgentDetection  = require('agent-detection');
-  var agentDetection = new AgentDetection();
-  agentDetection.addClasses();
+  var ag = new AgentDetection();
+  ag.addClasses();
 ```
 
 Also you can ask in your javascript code for an specific userAgent.
 
 ```
   var AgentDetection  = require('agent-detection');
-  var agentDetection = new AgentDetection();
+  var ag = new AgentDetection();
 
-  agentDetection.isTouch();
+  if( ag.isTouch() ) { ... }
 ```
 
 
 ## Installation
 
-To make it available in your projects just install the package
+To make it available in your projects, just install the package
 
 `npm i --save agent-detection`
 
-And make it available with require
+And require it with 
 
 `var AgentDetection  = require('agent-detection');`
 
 
 ## Tests
 
-We use mocha to test the utility, to make the test available in a
+We use mocha to test the utility. To make the test available in a
 headless environment we use jsdom to mock some properties.
 
-To pass the tests.
+To run the tests:
 
 `npm run test`
 
