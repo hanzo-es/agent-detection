@@ -2,7 +2,7 @@
   "name": "agent-detection",
   "version": "1.0.2",
   "description": "Detects current user agent and adds in case a classname to the html DOM tag",
-  "main": "dist/js/agentDetection.min.js",
+  "main": "dist/js/agent-detection.min.js",
   "scripts": {
     "test": "mocha --reporter spec",
     "build": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/agent-detection.js && uglifyjs src/*.js -m -c -o dist/js/agent-detection.min.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@repos.codehanzo.com:hanzo/agent-detection.git"
+    "url": "https://github.com/hanzo-es/agent-detection"
   },
   "keywords": [
     "user",
