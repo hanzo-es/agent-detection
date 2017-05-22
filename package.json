@@ -1,6 +1,6 @@
 {
   "name": "agent-detection",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Detects current user agent and adds in case a classname to the html DOM tag",
   "main": "dist/js/agent-detection.min.js",
   "scripts": {
