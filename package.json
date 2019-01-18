@@ -5,7 +5,7 @@
   "main": "dist/js/agent-detection.min.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "build": "mkdir -p dist/js && uglifyjs src/*.js -m -o dist/js/agent-detection.js && uglifyjs src/*.js -m -c -o dist/js/agent-detection.min.js",
+    "build": "mkdir dist && cd dist && mkdir js && cd .. && uglifyjs src/*.js -m -o dist/js/agent-detection.js && uglifyjs src/*.js -m -c -o dist/js/agent-detection.min.js",
     "install": "npm run build"
   },
   "repository": {
